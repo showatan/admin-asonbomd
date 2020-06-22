@@ -1,0 +1,83 @@
+<div class="container">
+  <!--Contenedor Principal-->
+
+  <br>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!--BarrA DE NAVEGACION  -->
+
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/angular-sv.svg" width="30" height="30" alt="">
+      Ng Blog1
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/inicio']">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" *ngFor="let category of categories">
+          <a class="nav-link" href="#">{{category.name}}</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav navbar-rigth" *ngIf="!identity">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/registro']">Registro</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav navbar-rigth" *ngIf="identity && identity.name">
+
+        <li *ngIf="identity && identity.image">
+          <div class="avatar_mask">
+            <img class="avatar_nav" src="{{url + 'user/avatar/' + identity.image}}" alt="">
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{identity.name + ' ' +identity.surname}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/crear-post']">Crear Entrada</a>
+            <a class="dropdown-item" [routerLink]="['/crear-categoria']">Crear Categoria</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Mi Perfil</a>
+            <a class="dropdown-item" [routerLink]="['/ajustes']">Ajustes</a>
+            <a class="dropdown-item" [routerLink]="['/logout/1']">Salir</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+  <!--cERRAMOS BARRA DE NAVEGACION -->
+
+  <!--Contenido-->
+ <router-outlet></router-outlet>
+
+ <footer>
+   <hr>
+   Master en desarrollo web fullstack con Moises &copy;
+   <hr>
+ </footer>
+
+</div>
+<!--Cerramos el contenedor principal-->
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
